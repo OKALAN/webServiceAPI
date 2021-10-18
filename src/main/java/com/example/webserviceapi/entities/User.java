@@ -1,9 +1,10 @@
 package com.example.webserviceapi.entities;
 
 import lombok.*;
+import sun.util.calendar.BaseCalendar;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 
 
 @Getter
@@ -27,7 +28,7 @@ public class User {
     private String email;
 
     @Column(name="birth")
-    private Date birth;
+    private String birth;
 
     @Column(name="nin")
     private String nin;
