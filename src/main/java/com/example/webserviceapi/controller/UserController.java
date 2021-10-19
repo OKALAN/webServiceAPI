@@ -3,7 +3,8 @@ package com.example.webserviceapi.controller;
 
 import com.example.webserviceapi.entities.User;
 import com.example.webserviceapi.exception.ResourceNotFoundException;
-import com.example.webserviceapi.repository.UserRepository;
+
+import com.example.webserviceapi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,32 +18,28 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private com.example.webserviceapi.repository.UserRepository UserRepository;
+    private UserService userService;
 
     @GetMapping
-    public List<User> getAllUsers(){
-        return UserRepository.findAll();
+    public ResponseEntity < List < User >>getAllUsers(){
+        return  ResponseEntity.ok().body(userService.getAllUser());
     }
 
-    // build create User REST API
-    @PostMapping
-    public User createUser(@RequestBody User User) {
-        return UserRepository.save(User);
-    }
-
-    // build get User by id REST API
     @GetMapping("{id}")
-    public ResponseEntity<User> getUserById(@PathVariable  long id){
-        User User = UserRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User not exist with id:" + id));
-        return ResponseEntity.ok(User);
+    public ResponseEntity < User > getUserById(@PathVariable long id) {
+        return ResponseEntity.ok().body(userService.getUserById(id));
+    }
+
+    @PostMapping
+    public ResponseEntity < User > createUser(@RequestBody User user) {
+        return ResponseEntity.ok().body(this.userService.createUser(user));
     }
 
     // build update User REST API
     @PutMapping("{id}")
     public ResponseEntity<User> updateUser(@PathVariable long id,@RequestBody User UserDetails) {
-        User updateUser = UserRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User not exist with id: " + id));
+        User updateUser = userService.getUserById(id);
+               // .orElseThrow(() -> new ResourceNotFoundException("User not exist with id: " + id));
 
         updateUser.setFullname(UserDetails.getFullname());
         updateUser.setPwd(UserDetails.getPwd());
@@ -52,21 +49,18 @@ public class UserController {
         updateUser.setAdresse(UserDetails.getAdresse());
         updateUser.setGenre(UserDetails.getGenre());
 
-        UserRepository.save(updateUser);
+        userService.updateUser(updateUser);
+        return ResponseEntity.ok().body(this.userService.updateUser(UserDetails));
 
-        return ResponseEntity.ok(updateUser);
     }
 
     // build delete User REST API
     @DeleteMapping("{id}")
-    public ResponseEntity<HttpStatus> deleteUser(@PathVariable long id){
 
-        User User = UserRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User not exist with id: " + id));
+        public HttpStatus deleteUser(@PathVariable long id) {
+            this.userService.deleteUser(id);
+            return HttpStatus.OK;
 
-        UserRepository.delete(User);
-
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
     }
 
