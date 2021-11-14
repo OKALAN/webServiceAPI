@@ -1,6 +1,5 @@
 package com.example.webserviceapi.controller;
 
-
 import com.example.webserviceapi.entities.User;
 import com.example.webserviceapi.exception.ResourceNotFoundException;
 

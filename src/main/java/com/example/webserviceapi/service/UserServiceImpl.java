@@ -2,17 +2,16 @@ package com.example.webserviceapi.service;
 
 import com.example.webserviceapi.entities.User;
 import com.example.webserviceapi.exception.ResourceNotFoundException;
-import com.example.webserviceapi.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 import java.util.Optional;
 
 
 @Service
 @Transactional
+@SpringBootApplication
 public class UserServiceImpl implements UserService{
 
     private final com.example.webserviceapi.repository.UserRepository UserRepository;
