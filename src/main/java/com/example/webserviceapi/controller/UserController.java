@@ -40,6 +40,7 @@ public class UserController {
         User updateUser = userService.getUserById(id);
                // .orElseThrow(() -> new ResourceNotFoundException("User not exist with id: " + id));
 
+
         updateUser.setFullname(UserDetails.getFullname());
         updateUser.setPwd(UserDetails.getPwd());
         updateUser.setEmail(UserDetails.getEmail());
