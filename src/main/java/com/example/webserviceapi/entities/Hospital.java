@@ -17,7 +17,7 @@ import javax.persistence.*;
 public class Hospital {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long idh;
 
     @Column(name="name")
     private String name;

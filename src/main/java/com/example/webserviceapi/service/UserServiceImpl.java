@@ -28,11 +28,11 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User updateUser (User User) {
-        Optional < User > UserDb = this.UserRepository.findById(User.getId());
+        Optional < User > UserDb = this.UserRepository.findById(User.getIdu());
 
         if (UserDb.isPresent()) {
             User UserUpdate = UserDb.get();
-            UserUpdate.setId(User.getId());
+            UserUpdate.setIdu(User.getIdu());
             UserUpdate .setFullname(User.getFullname());
             UserUpdate .setPwd(User.getPwd());
             UserUpdate .setEmail(User.getEmail());
@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService{
             UserRepository.save(UserUpdate);
             return UserUpdate;
         } else {
-            throw new ResourceNotFoundException("Record not found with id : " + User.getId());
+            throw new ResourceNotFoundException("Record not found with id : " + User.getIdu());
         }
     }
 

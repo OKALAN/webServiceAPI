@@ -1,10 +1,6 @@
 package com.example.webserviceapi.entities;
-
 import lombok.*;
-import sun.util.calendar.BaseCalendar;
-
 import javax.persistence.*;
-import java.util.Date;
 
 
 @Getter
@@ -16,7 +12,7 @@ import java.util.Date;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long idu;
 
     @Column(name="fullname")
     private String fullname;

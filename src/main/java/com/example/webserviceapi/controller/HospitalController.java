@@ -23,11 +23,10 @@ public class HospitalController {
         return  ResponseEntity.ok().body(hospitalService.getAllHospital());
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity < Hospital > getHospitalById(@PathVariable long id) {
         return ResponseEntity.ok().body(hospitalService.getHospitalById(id));
     }
-
 
     
 }

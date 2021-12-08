@@ -24,7 +24,7 @@ public class UserController {
         return  ResponseEntity.ok().body(userService.getAllUser());
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public ResponseEntity < User > getUserById(@PathVariable long id) {
         return ResponseEntity.ok().body(userService.getUserById(id));
     }
@@ -35,7 +35,7 @@ public class UserController {
     }
 
     // build update User REST API
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable long id,@RequestBody User UserDetails) {
         User updateUser = userService.getUserById(id);
                // .orElseThrow(() -> new ResourceNotFoundException("User not exist with id: " + id));
@@ -54,11 +54,11 @@ public class UserController {
     }
 
     // build delete User REST API
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
 
-        public HttpStatus deleteUser(@PathVariable long id) {
-            this.userService.deleteUser(id);
-            return HttpStatus.OK;
+    public HttpStatus deleteUser(@PathVariable long id) {
+        this.userService.deleteUser(id);
+        return HttpStatus.OK;
 
 
     }
