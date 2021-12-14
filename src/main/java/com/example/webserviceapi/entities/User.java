@@ -2,7 +2,6 @@ package com.example.webserviceapi.entities;
 import lombok.*;
 import javax.persistence.*;
 
-
 @Getter
 @Setter
 @NoArgsConstructor

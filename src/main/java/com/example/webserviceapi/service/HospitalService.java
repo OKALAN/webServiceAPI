@@ -9,4 +9,5 @@ public interface HospitalService {
     List<Hospital> getAllHospital();
 
     Hospital getHospitalById(long hospitalId);
+
 }

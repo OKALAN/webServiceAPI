@@ -2,7 +2,6 @@ package com.example.webserviceapi.controller;
 
 
 import com.example.webserviceapi.entities.Rdv;
-import com.example.webserviceapi.entities.User;
 import com.example.webserviceapi.service.RdvService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

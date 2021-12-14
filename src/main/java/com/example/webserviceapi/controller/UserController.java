@@ -1,8 +1,6 @@
 package com.example.webserviceapi.controller;
 
 import com.example.webserviceapi.entities.User;
-import com.example.webserviceapi.exception.ResourceNotFoundException;
-
 import com.example.webserviceapi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,7 +36,7 @@ public class UserController {
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable long id,@RequestBody User UserDetails) {
         User updateUser = userService.getUserById(id);
-               // .orElseThrow(() -> new ResourceNotFoundException("User not exist with id: " + id));
+
 
 
         updateUser.setFullname(UserDetails.getFullname());

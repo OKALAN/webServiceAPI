@@ -37,4 +37,10 @@ public class Hospital {
     @Column(name="email")
     private String email;
 
+
+    @Column(name="type")
+    private int type;
+
+
+
 }

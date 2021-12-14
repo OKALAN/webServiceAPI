@@ -13,15 +13,12 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "rdv")
-public class Rdv {
+@Table(name = "nbrVaxTest")
+public class NbrVaxTest {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long idr;
-
-    @OneToOne
-    @JoinColumn(name = "idu")
-    private User user;
+    private long idn;
 
     @OneToOne
     @JoinColumn(name = "idh")
@@ -30,11 +27,11 @@ public class Rdv {
     @Column(name="date")
     private String date;
 
-    @Column(name="type")
-    private String type;
+    @Column(name="test")
+    private long test;
 
-    @Column(name="heure")
-    private String heure;
+    @Column(name="vax")
+    private long vax;
 
 
 }
